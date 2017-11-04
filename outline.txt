@@ -1,0 +1,28 @@
+[x]Game Class for Game Objects which stores all numeric and string data on game.
+[x]Main which prompts the user for input and creates a new game object with the given name.
+[x]A py file which stores all the functions dealing with online APIS.
+
+[o]Amalgamate reviews from the Most Trusted Game Review Websites (5-10 reviews, but be consistent)
+[o]Create an average critic score from at least 10 of the Most Trusted Game Review Websites.
+[x]Create an average weekly sales count stat
+[x]Create an average annual sales count stat
+[x]Gather more play data (Multiplayer, Couch Coop, etc.)
+[o]Gather price data by scraping pricecharting.com
+[o]Pull Game Modes off IGDB
+[o]Pull Videos off IGDB
+[o]Pull Aggregated Rating Score off IGDB
+[o]Pull Average User Score off IGDB
+[o]Pull number of external critic scores off IGDB
+
+[o]Create a compare function for game comparisons.
+
+[o]Create a UI for presenting data.
+	- We will be using Djanog, and repurposing this app as a web app.
+
+
+Requirements:
+requests
+python 3
+BeautifulSoup4
+lxml
+https://igdb.github.io/api/references/filters/#text-search
