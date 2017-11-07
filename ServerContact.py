@@ -53,7 +53,7 @@ def getGameModes(gameID):
 			gameModes.append(modeObj[0]["name"])
 		return gameModes
 	except KeyError:
-		print("No Game Modes Available.")
+		# print("No Game Modes Available.")
 		gamemodes = [] 
 		return gamemodes
 
@@ -78,7 +78,7 @@ def getTimeToBeat(gameID):
 			time[entry] = float("{0:.2f}".format(time[entry]/60.0/60.0))
 		print(time)
 	except KeyError:
-		print("No Time To Beat Available.")
+		# print("No Time To Beat Available.")
 		return("No Time To Beat Available.")
 
 def getIGDBSummary(gameID):
@@ -87,10 +87,11 @@ def getIGDBSummary(gameID):
 	jObj = json.loads(soup.text)
 	try:
 		summary = jObj[0]["summary"]
-		print(summary)
+		# print(summary)
 		return summary
 	except KeyError:
-		print("No summary available.")
+		return "No Summary Available."
+		# print("No summary available.")
 		
 def getIGDBStoryline(gameID):
 	url = IGDBBaseUrl + "{id}?fields=storyline".format(id = gameID)
@@ -98,20 +99,20 @@ def getIGDBStoryline(gameID):
 	jObj = json.loads(soup.text)
 	try:
 		summary = jObj[0]["storyline"]
-		print(summary)
+		# print(summary)
 		return summary
 	except KeyError:
-		print("No story line available.")
+		return "No story line available."
 	
 		
 def getNumberOfReviews(gameID):
 	url = IGDBBaseUrl + "{id}?fields=aggregated_rating_count".format(id = gameID)
 	soup = igdbAPICaller(url)
-	print(soup)
+	# print(soup)
 	jObj = json.loads(soup.text)
 	try:
 		ratingNumber = jObj[0]["aggregated_rating_count"]
-		print(ratingNumber)
+		# print(ratingNumber)
 		return str(ratingNumber)
 	except KeyError:
 		return "0"
@@ -236,7 +237,7 @@ def openGameWebChart(searchName):
 		if(listings[i].text == searchName):
 			count = i + 10
 			entries += 1
-	print(dataList)
+	# print(dataList)
 	return dataList
 
 
