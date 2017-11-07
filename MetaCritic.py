@@ -76,8 +76,8 @@ class MetaCritic():
 					reviewData.append({"author":auth, "review":rev, "date":date, "score":score})
 			except AttributeError:
 				reviewData.append("None")
-			print("Review Data:")
-			print(reviewData)
+			# print("Review Data:")
+			# print(reviewData)
 			platformAndReviews.update({self.getPlatforms()[count]:reviewData})
 			rating = siteSoup.findAll("span", itemprop = "ratingValue")
 			for item in rating:
