@@ -32,12 +32,13 @@ class find_game():
 		self.developer = getDeveloper(self.getRoot())
 		self.gameModes = getGameModes(self.getIGDBId()) #new, a list
 		self.aggregatedRating = str(getAggregatedRating(self.getIGDBId())) + ": based on " + getNumberOfReviews(self.getIGDBId()) + " professional reviews." #new
-		print(self.aggregatedRating)
+		# print(self.aggregatedRating)
 		self.timeToBeat = getTimeToBeat(self.getIGDBId())
 		self.IGDBSummary = getIGDBSummary(self.getIGDBId())
 		self.IGDBStoryline = getIGDBStoryline(self.getIGDBId())
 		self.metaRating = getReviewsAndRating(self.getGameName(), self.getPlatformList())
-		print(self.metaRating)
+		# print("This is the self.metaRating")
+		# print(self.metaRating)
 		self.rundown()
 		
 	def setInitialReleaseDate(self):
@@ -90,7 +91,6 @@ class find_game():
 	def printReleaseTable(self):
 		for item in self.platReleaseTable:
 			print("{platform} - {release}".format(platform = item, release = self.platReleaseTable[item]))
-	\
 	def getReleaseTable(self):
 		return self.platReleaseTable
 		
@@ -137,6 +137,23 @@ class find_game():
 			print("{:<30}".format("Average Sales per Month:") + "{sales: <40}".format(sales = format(self.getSalesPerMonth(), ",d")))
 		else:
 			print("No Sales Data Available.")
+			print("-----------------------------------------")
+			for entry in self.metaRating:
+				if(entry != "rating"):
+					print("Review: ") #This only prints the first review. Remember that you can find all reviews in metaRating, compartmentalized.
+					print(self.metaRating[entry][0]["review"])
+
+			print("-----------------------------------------")
+			print(self.aggregatedRating)
+			print("-----------------------------------------")
+			print("Time to beat: " + self.timeToBeat)
+			print("-----------------------------------------")
+			print("Game Modes: ")
+			for item in self.gameModes:
+				print(item)
+			print("-----------------------------------------")
+			
+
 		
 	
 	def getGenre(self):
