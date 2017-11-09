@@ -56,14 +56,12 @@ class MetaCritic():
 			headers = {'User-Agent':'Mozilla/5.0'}
 			r = requests.get(url, headers = headers)
 			siteSoup = BeautifulSoup(r.text, "html.parser")
-			siteSoup.prettify()
 			try:
 				reviewsList = siteSoup.find("ol", class_="reviews critic_reviews")
-				numReviews = reviewsList.findAll("li", class_="review critic_review")
-				if len(numReviews) == 0:
+				reviews = reviewsList.findAll("li", class_="review critic_review")
+				if len(reviews) == 0:
 					reviews = siteSoup.findAll("li", class_="review critic_review first_review last_review")
 				else:
-					reviews = siteSoup.findAll("li", class_="review critic_review")
 					firstReview = siteSoup.find("li", class_="review critic_review first_review")
 					lastReview = siteSoup.find("li", class_="review critic_review last_review")
 					reviews.append(firstReview)
@@ -71,17 +69,19 @@ class MetaCritic():
 				for item in reviews:
 					auth = item.find("a", class_="external").text.strip().replace("\n", "")
 					rev = item.find("div", class_="review_body").text.strip().replace("\n", "")
-					date = item.find("div", class_="date").text.strip().replace("\n", "")
+					try:
+						date = item.find("div", class_="date").text.strip().replace("\n", "")
+					except AttributeError:
+						date = None
 					score = item.find("div", class_="review_grade").text.strip().replace("\n", "")
 					reviewData.append({"author":auth, "review":rev, "date":date, "score":score})
 			except AttributeError:
 				reviewData.append("None")
-			# print("Review Data:")
-			# print(reviewData)
 			platformAndReviews.update({self.getPlatforms()[count]:reviewData})
 			rating = siteSoup.findAll("span", itemprop = "ratingValue")
 			for item in rating:
-				overallRate += int(item.text)
+				overallRate += int(item.text) #inefficent, send up
+				reviewData.append(item.text)
 			count += 1
 		if len(self.getUrlBank())>0:
 			overallRate = float(overallRate)/len(self.getUrlBank())
