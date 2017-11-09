@@ -37,6 +37,8 @@ class find_game():
 		self.IGDBSummary = getIGDBSummary(self.getIGDBId())
 		self.IGDBStoryline = getIGDBStoryline(self.getIGDBId())
 		self.metaRating = getReviewsAndRating(self.getGameName(), self.getPlatformList())
+		self.metaScore = self.metaRating.popitem()
+		#self.metaScore = self.metaRating.popitem()
 		# print("This is the self.metaRating")
 		# print(self.metaRating)
 		self.rundown()
@@ -138,20 +140,51 @@ class find_game():
 		else:
 			print("No Sales Data Available.")
 			print("-----------------------------------------")
-		for entry in self.metaRating:
-			if(entry != "rating"):
-				print("Review: ") #This only prints the first review. Remember that you can find all reviews in metaRating, compartmentalized.
-				print(self.metaRating[entry][0]["review"])
+
+
+		# for index,entry in enumerate(self.metaRating):
+		# 	if(entry != "rating"):
+		# 		print(entry)
+		# 		print("Reviews for {platform}: ".format(platform=self.getPlatformList()[index])) #This only prints the first review. Remember that you can find all reviews in metaRating, compartmentalized.
+		# 		print("{platform} Score: ".format(platform=self.getPlatformList()[index]) + entry)
+		# 		print()
+		# 		for reviews in entry:
+		# 			print(reviews)
+		# 			if(reviews["date"]):
+		# 				print(reviews["date"])
+		# 			print(reviews["review"])
+		# 			print("Critic Rating: " + reviews["score"])
+		#		print("-----------------------------------------")
+
 
 		print("-----------------------------------------")
 		print(self.aggregatedRating)
 		print("-----------------------------------------")
-		print("Time to beat: " + self.timeToBeat)
-		print("-----------------------------------------")
+		if(self.timeToBeat):
+			print("Time to beat: " + self.timeToBeat)
+			print("-----------------------------------------")
 		print("Game Modes: ")
 		for item in self.gameModes:
 			print(item)
-			
+		#Optimize by Creating Function and Storing Values as Individual Parameters
+		library = self.metaRating
+		for entry in library:
+			print("Reviews for {platform}: ".format(platform = entry))
+			print("MetaCritic Score for {platform}: {score}".format(
+					platform = entry, score = library[entry][len(library[entry])-1]))
+			print("-----------------------------------------")
+			for review in library[entry]:
+				if(type(review)==str):
+					None
+				else:
+					print(review["author"]+":")
+					if(review["date"]):
+						print(review["date"])
+					print(review["review"])
+					print("Score: " + review["score"])
+					print()
+		#Optimize by Creating Function and Storing Values as Individual Parameters, rather 
+		#than raw Dict Data 
 
 		
 	
