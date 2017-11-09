@@ -76,7 +76,6 @@ def getTimeToBeat(gameID):
 		time = jObj[0]["time_to_beat"]
 		for entry in time:
 			time[entry] = float("{0:.2f}".format(time[entry]/60.0/60.0))
-		print(time)
 	except KeyError:
 		# print("No Time To Beat Available.")
 		return("No Time To Beat Available.")
