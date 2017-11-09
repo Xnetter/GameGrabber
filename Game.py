@@ -3,7 +3,7 @@ from ServerContact import *
 import time
 from datetime import timedelta
 from calendar import monthrange
-from parseJSON import *
+#from parseJSON import *
 
 
 """Creates a game object based on user input and compiles statistics"""
