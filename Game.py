@@ -138,20 +138,19 @@ class find_game():
 		else:
 			print("No Sales Data Available.")
 			print("-----------------------------------------")
-			for entry in self.metaRating:
-				if(entry != "rating"):
-					print("Review: ") #This only prints the first review. Remember that you can find all reviews in metaRating, compartmentalized.
-					print(self.metaRating[entry][0]["review"])
+		for entry in self.metaRating:
+			if(entry != "rating"):
+				print("Review: ") #This only prints the first review. Remember that you can find all reviews in metaRating, compartmentalized.
+				print(self.metaRating[entry][0]["review"])
 
-			print("-----------------------------------------")
-			print(self.aggregatedRating)
-			print("-----------------------------------------")
-			print("Time to beat: " + self.timeToBeat)
-			print("-----------------------------------------")
-			print("Game Modes: ")
-			for item in self.gameModes:
-				print(item)
-			print("-----------------------------------------")
+		print("-----------------------------------------")
+		print(self.aggregatedRating)
+		print("-----------------------------------------")
+		print("Time to beat: " + self.timeToBeat)
+		print("-----------------------------------------")
+		print("Game Modes: ")
+		for item in self.gameModes:
+			print(item)
 			
 
 		
