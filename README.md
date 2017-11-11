@@ -1,13 +1,14 @@
 # GameGrabber
 A work in progress. Will be a web app that amalgamates, displays, computes, and compares data for Video Games on all platforms.
 
-## Requirements
-
-lxml, Beautiful Soup 4, requests, python 3.6
-
 ## Instructions:
 
-Launch python main.py, and follow the prompt to visualize the data accrual process of the program. While there is a barebones
+```shell
+$ pip install -r requirements.txt
+$ python main.py
+```
+
+Then follow the prompt to visualize the data accrual process of the program. While there is a barebones
 command UI, eventually I plan to have the project overhauled in Django.
 
 ## How it Works:
