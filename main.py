@@ -6,7 +6,7 @@ if(searchToken == "exit()"):
 	exit()
 game = getGame(searchToken)
 
-initialize = input("Data will be compiled on {game}, is this correct? [Y]/N\n".format(game=game))
+initialize = input("Data will be compiled on {}, is this correct? [Y]/N\n".format(game))
 if initialize not in ('Yy'):
 	print("Here is a list of games with similar titles.")
 	#Currently the code only returns the first result of the list.
