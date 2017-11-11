@@ -5,7 +5,7 @@ searchToken = input("Please enter the name of the game you'd like to research: "
 if(searchToken == "exit()"):
 	exit()
 game = getGame(searchToken)
-initialize = input("Data will be compiled on {game}, is this correct? Y/N\n".format(game=game))
+initialize = input("Data will be compiled on {game}, is this correct? [Y]/N\n".format(game=game))
 if(initialize == 'Y' or initialize == 'y'):
 	pass
 else:
