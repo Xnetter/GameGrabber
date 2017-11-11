@@ -3,7 +3,6 @@ import sys
 from datetime import datetime
 from bs4 import BeautifulSoup
 from Game import *
-from igdb_api_python.igdb import *
 import json
 from MetaCritic import *
 
