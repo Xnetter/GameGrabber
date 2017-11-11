@@ -12,10 +12,8 @@ if initialize not in ('Yy'):
 	#Currently the code only returns the first result of the list.
 	#TODO Cycle through the first 3 results then return 'Please try again' after all 3 have failed.
 	gameList = getGameList(searchToken)
-	count = 0
-	for title in gameList:
+	for count, title in enumerate(gameList):
 		print("[{num}] {title}".format(num=count, title=title))
-		count+=1
 	gameIndex = int(input("Please enter the number of the title you wish to research, or -1 to escape: "))
 	if(gameIndex == -1):
 		exit()
